@@ -60,8 +60,8 @@ class DataTransformation:
         logging.info('Entered initiate data transformation method of data transformation class')
 
         try:
-            dataframe=self.get_data(feature_store_file_path=self.feature_Store_file_path)
-            x=dataframe.drop(columnss=TARGET_COLUMN)
+            dataframe=self.get_data(feature_store_file_path=self.feature_store_file_path)
+            x=dataframe.drop(columns=TARGET_COLUMN)
             y=np.where(dataframe[TARGET_COLUMN]==-1,0,1)
 
             x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2)
@@ -76,8 +76,8 @@ class DataTransformation:
 
             self.utils.save_object(file_path=preprocessor_path,obj=preprocessor)
 
-            train_arr=np.c[x_train_scaled, np.array(y_train)]
-            test_arr=np.c[x_test_scaled, np.array(y_test)]
+            train_arr=np.c_[x_train_scaled, np.array(y_train)]
+            test_arr=np.c_[x_test_scaled, np.array(y_test)]
 
             return (train_arr,test_arr,preprocessor_path)
         

@@ -29,10 +29,10 @@ class PredictionPipeline:
     def save_input_files(self) ->str:
         try:
             pred_file_input_dir = "prediction_artifacts"
-            os.makedir(pred_file_input_dir, exist_ok = True)
+            os.makedirs(pred_file_input_dir, exist_ok = True)
 
             input_csv_file = self.request.files['file']
-            pred_file_path = os.path.join(pred_file_input_dir, input_csv_file.file_name)
+            pred_file_path = os.path.join(pred_file_input_dir, input_csv_file.filename)
 
             input_csv_file.save(pred_file_path)
 
